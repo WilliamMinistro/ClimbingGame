@@ -20,7 +20,6 @@ public class PauseScript : MonoBehaviour
         {
             Time.timeScale = 1;
             isPaused = false;
-            scroll_script.speed = 0.05f;
             Song.Play();
             canvas.SetActive(false);
         }
@@ -28,7 +27,6 @@ public class PauseScript : MonoBehaviour
         {
             Time.timeScale = 0;
             isPaused = true;
-            scroll_script.speed = 0;
             Song.Pause();
             canvas.SetActive(true);
         }
@@ -40,7 +38,6 @@ public class PauseScript : MonoBehaviour
         {
             Time.timeScale = 1;
             isPaused = false;
-            scroll_script.speed = 0.05f;
             Song.Play();
             canvas.SetActive(false);
         }
@@ -48,7 +45,6 @@ public class PauseScript : MonoBehaviour
         {
             Time.timeScale = 0;
             isPaused = true;
-            scroll_script.speed = 0;
             Song.Pause();
             canvas.SetActive(true);
         }
