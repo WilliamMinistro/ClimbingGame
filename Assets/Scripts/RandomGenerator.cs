@@ -5,27 +5,12 @@ using UnityEngine.UI;
 
 public class RandomGenerator : MonoBehaviour
 {
-//    public GameObject spikes;
-//    public GameObject spikeClone;
-//    public GameObject SpinningSpikeClone;
-//    public GameObject FireClone;
-//    public GameObject SpinningSpikeClone2;
-//    public GameObject bandageClone;
-//    public GameObject MainCamera;
-    public Text pointText;
-//    public Text pointGameOver;
-//    public Text healthText;
     public static float respawnTime = 2f;
     private Vector2 bounds;
-    public static int pointCount;
-    public GameObject balloon;
-//    private int yValue = 6;
-//    private int yValueRight = 6;
-//    private int yValueBand = 6;
     public int randVariable, randVariableRight;
-    bool isSpikeCol;
-    float score;
-    double score_rounded;
+    public GameObject fireball;
+    public GameObject rock;
+    public GameObject stalagmite;
 
 
     System.Random random = new System.Random();
@@ -33,53 +18,51 @@ public class RandomGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine(objectWave());
-
+        StartCoroutine(objectWave());
     }
 
     // Update is called once per frame
     void Update()
     {
-        points();
     }
 
-//    private void spawnL()
-//    {
-//        int whichObj = random.Next(1, 4);
-//
-//        if (whichObj == 1)
-//        {
-//            randVariable = random.Next(6, 10);
-//
-//            yValue = yValue + randVariable;
-//            Instantiate(spikeClone, new Vector3(-1.95f, (yValue), 0f), Quaternion.Euler(0, 0, -90));
-//        }
-//
-//        if (whichObj == 2)
-//        {
-//            int randSpikeCol = random.Next(1, 3);
-//
-//            if (randSpikeCol == 1)
-//            {
-//                randVariable = random.Next(7, 9);
-//                yValue = yValue + randVariable;
-//                Instantiate(SpinningSpikeClone, new Vector3(-2.45f, (yValue), 0f), Quaternion.Euler(0, 0, -25.445f));
-//            }
-//            if (randSpikeCol == 2)
-//            {
-//                randVariable = random.Next(8, 9);
-//                yValue = yValue + randVariable;
-//                Instantiate(SpinningSpikeClone, new Vector3(-1.75f, (yValue), 0f), Quaternion.Euler(0, 0, 90f));
-//                isSpikeCol = true;
-//            }
-//        }
-//        if(whichObj == 3)
-//        {
-//            randVariable = random.Next(6, 10);
-//            yValue = yValue + randVariable;
-//            Instantiate(FireClone, new Vector3(-1.62f, (yValue), 0f), Quaternion.Euler(0, 0, 0));
-//        }
-//    }
+    IEnumerator objectWave()
+    {
+        while(true){
+            spawnL();
+            spawnR();
+            spawnM();
+//            spawnBandage();
+//            yield return new WaitForSeconds(respawnTime);
+            yield return new WaitForSeconds(respawnTime);
+        }
+    }
+
+    private void spawnL()
+    {
+        int willSpawn = random.Next(1,10);
+        if(willSpawn == 2)
+        {
+            Instantiate(stalagmite, new Vector3(-1.3f, 6, 10), Quaternion.identity);
+        }
+    }
+    private void spawnM()
+    {
+        int willSpawn = random.Next(1,10);
+        if(willSpawn == 2)
+        {
+            Instantiate(stalagmite, new Vector3(0f, 6, 10), Quaternion.identity);
+        }
+    }
+    private void spawnR()
+    {
+        int willSpawn = random.Next(1,10);
+        if(willSpawn == 2)
+        {
+            Instantiate(stalagmite, new Vector3(1.3f, 6, 10), Quaternion.identity);
+        }
+    }
+
 //    private void spawnR()
 //    {
 //        int whichObj2 = random.Next(1, 4);
@@ -134,29 +117,6 @@ public class RandomGenerator : MonoBehaviour
 //    }
 
 //
-//    IEnumerator objectWave()
-//    {
-//        while (true)
-//        {
-//
-//            spawnL();
-//            spawnR();
-//            spawnBandage();
-//            yield return new WaitForSeconds(respawnTime);
-//        }
-//    }
 
-    public void points()
-    {
-        score = score + 0.0003f;
-        score_rounded = System.Math.Round(score, 1);
-        pointText.text = score_rounded + "m";
-//        healthText.text = "HEALTH: " + HealthController.Health;
-//        pointGameOver.text = "" + pointCount;
-    }
-    
-    public void PointChanger()
-    {
-        
-    }
+
 }
