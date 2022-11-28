@@ -5,25 +5,51 @@ using UnityEngine.UI;
 
 public class RandomGenerator : MonoBehaviour
 {
-    public static float respawnTime = 2f;
+    public float respawnTime = 2f;
     private Vector2 bounds;
-    public int randVariable, randVariableRight;
+    public int difficulty;
     public GameObject fireball;
     public GameObject rock;
     public GameObject stalagmite;
-
-
+    public Point_Functionality point_functionality;
     System.Random random = new System.Random();
 
     // Start is called before the first frame update
     void Start()
     {
+        difficulty = 10;  // Difficulty starts at 10, since it is the upper bound of an RNG. As it gets lower, it gets more difficult.
         StartCoroutine(objectWave());
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(point_functionality.score_rounded >= 150 && point_functionality.score_rounded <= 300)
+        {
+            difficulty = 9;
+        }
+        if(point_functionality.score_rounded >= 300 && point_functionality.score_rounded <= 450)
+        {
+            difficulty = 8;
+        }
+        if(point_functionality.score_rounded >= 450 && point_functionality.score_rounded <= 550)
+        {
+            difficulty = 7;
+            respawnTime = 1.5f;
+        }
+        if(point_functionality.score_rounded >= 550 && point_functionality.score_rounded <= 650)
+        {
+            difficulty = 6;
+        }
+        if(point_functionality.score_rounded >= 650 && point_functionality.score_rounded <= 1000)
+        {
+            difficulty = 5;
+            respawnTime = 1f;
+        }
+        if(point_functionality.score_rounded >= 1000)
+        {
+            difficulty = 4;
+        }
     }
 
     IEnumerator objectWave()
@@ -57,15 +83,13 @@ public class RandomGenerator : MonoBehaviour
                 spawnR();
                 spawnM();
             }
-//            spawnBandage();
-//            yield return new WaitForSeconds(respawnTime);
             yield return new WaitForSeconds(respawnTime);
         }
     }
 
     private void spawnL()
     {
-        int willSpawn = random.Next(1,10);
+        int willSpawn = random.Next(1,difficulty);
         if(willSpawn == 1)
         {
             Instantiate(stalagmite, new Vector3(-1.3f, 6, 10), Quaternion.identity);
@@ -81,7 +105,7 @@ public class RandomGenerator : MonoBehaviour
     }
     private void spawnM()
     {
-        int willSpawn = random.Next(1,10);
+        int willSpawn = random.Next(1,difficulty);
         if(willSpawn == 1)
         {
             Instantiate(stalagmite, new Vector3(0f, 6, 10), Quaternion.identity);
@@ -97,7 +121,7 @@ public class RandomGenerator : MonoBehaviour
     }
     private void spawnR()
     {
-        int willSpawn = random.Next(1,10);
+        int willSpawn = random.Next(1,difficulty);
         if(willSpawn == 1)
         {
             Instantiate(stalagmite, new Vector3(1.3f, 6, 10), Quaternion.identity);

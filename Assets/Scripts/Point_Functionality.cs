@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Point_Functionality : MonoBehaviour
 {
     float score;
-    double score_rounded;
+    public double score_rounded;
     public Text pointText;
     // Start is called before the first frame update
     void Start()
