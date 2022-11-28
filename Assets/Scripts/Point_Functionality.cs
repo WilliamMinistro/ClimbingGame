@@ -22,8 +22,8 @@ public class Point_Functionality : MonoBehaviour
 
     public void points()
     {
-        score = score + 0.0003f;
-        score_rounded = System.Math.Round(score, 1);
+        score = score + 0.003f;
+        score_rounded = System.Math.Round(score, 0);
         pointText.text = score_rounded + "m";
     }
 }
