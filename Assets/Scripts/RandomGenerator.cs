@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class RandomGenerator : MonoBehaviour
 {
-    public float respawnTime = 2f;
+    public float respawnTime = 1.5f;
     private Vector2 bounds;
     public int difficulty;
     public GameObject fireball;
@@ -17,7 +17,7 @@ public class RandomGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        difficulty = 10;  // Difficulty starts at 10, since it is the upper bound of an RNG. As it gets lower, it gets more difficult.
+        difficulty = 8;  // Difficulty starts at 10, since it is the upper bound of an RNG. As it gets lower, it gets more difficult.
         StartCoroutine(objectWave());
     }
 
@@ -26,29 +26,30 @@ public class RandomGenerator : MonoBehaviour
     {
         if(point_functionality.score_rounded >= 150 && point_functionality.score_rounded <= 300)
         {
-            difficulty = 9;
+            difficulty = 7;
+            respawnTime = 1.25f;
         }
         if(point_functionality.score_rounded >= 300 && point_functionality.score_rounded <= 450)
         {
-            difficulty = 8;
+            difficulty = 6;
         }
         if(point_functionality.score_rounded >= 450 && point_functionality.score_rounded <= 550)
         {
-            difficulty = 7;
-            respawnTime = 1.5f;
+            difficulty = 5;
+            respawnTime = 1.0f;
         }
         if(point_functionality.score_rounded >= 550 && point_functionality.score_rounded <= 650)
         {
-            difficulty = 6;
+            difficulty = 4;
+            respawnTime = .95f;
         }
-        if(point_functionality.score_rounded >= 650 && point_functionality.score_rounded <= 1000)
+        if(point_functionality.score_rounded >= 650 && point_functionality.score_rounded < 1000)
         {
-            difficulty = 5;
-            respawnTime = 1f;
+            respawnTime = .9f;
         }
         if(point_functionality.score_rounded >= 1000)
         {
-            difficulty = 4;
+            respawnTime = .85f;
         }
     }
 
@@ -101,6 +102,7 @@ public class RandomGenerator : MonoBehaviour
         if(willSpawn == 3)
         {
             Instantiate(rock, new Vector3(-1.3f, 6, 10), Quaternion.identity);
+
         }
     }
     private void spawnM()
@@ -113,6 +115,7 @@ public class RandomGenerator : MonoBehaviour
         if(willSpawn == 2)
         {
             Instantiate(fireball, new Vector3(0f, 6, 10), Quaternion.identity);
+
         }
         if(willSpawn == 3)
         {
