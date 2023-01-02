@@ -6,7 +6,7 @@ public class CoinGeneration : MonoBehaviour
 {
     public static float speed = -.001f;
     public GameObject coin;
-    public float respawnTime = 1.5f;
+    public float respawnTime = 6.0f;
     bool isCreated;
 
     System.Random random = new System.Random();
@@ -19,7 +19,7 @@ public class CoinGeneration : MonoBehaviour
     IEnumerator coinWave()
     {
         while(true){
-            int whichLane = random.Next(1,7);
+            int whichLane = random.Next(1,12);
             if(whichLane == 1)
             {
                 spawnL();
@@ -57,7 +57,7 @@ public class CoinGeneration : MonoBehaviour
     }
     private void spawnL()
     {
-            int coinSpawn = random.Next(1,20);
+            int coinSpawn = random.Next(1,15);
             if(coinSpawn == 4)
             {
                 int howManyCoins = random.Next(1,5);
@@ -87,7 +87,7 @@ public class CoinGeneration : MonoBehaviour
     }
     private void spawnR()
     {
-            int coinSpawn = random.Next(1,20);
+            int coinSpawn = random.Next(1,15);
             if(coinSpawn == 11)
             {
                 int howManyCoins = random.Next(1,5);
@@ -117,8 +117,8 @@ public class CoinGeneration : MonoBehaviour
     }
     private void spawnM()
     {
-            int coinSpawn = random.Next(1,20);
-            if(coinSpawn == 17)
+            int coinSpawn = random.Next(1,15);
+            if(coinSpawn == 9)
             {
                 int howManyCoins = random.Next(1,5);
                 if(howManyCoins == 1)
