@@ -17,7 +17,7 @@ public class RandomGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        difficulty = 8;  // Difficulty starts at 10, since it is the upper bound of an RNG. As it gets lower, it gets more difficult.
+        difficulty = 8;  // Difficulty starts at 8, since it is the upper bound of an RNG. As it gets lower, it gets more difficult.
         StartCoroutine(objectWave());
     }
 

@@ -537,7 +537,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435522993}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2963ddbd85dff9d488425e9a3f990071, type: 3}
   m_Name: 
@@ -558,6 +558,9 @@ MonoBehaviour:
   point_functionality: {fileID: 519420033}
   myAnimationController: {fileID: 435522998}
   speed: -0.005
+  screen_shake: {fileID: 519420037}
+  increment: 1
+  isSlamming: 0
 --- !u!95 &435522998
 Animator:
   serializedVersion: 4
@@ -593,6 +596,7 @@ GameObject:
   - component: {fileID: 519420034}
   - component: {fileID: 519420035}
   - component: {fileID: 519420036}
+  - component: {fileID: 519420037}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -727,6 +731,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coin: {fileID: 1855847115}
   respawnTime: 1.5
+--- !u!114 &519420037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54a6b40dee90f6d4cbb166989e138400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &612306756
 GameObject:
   m_ObjectHideFlags: 0
