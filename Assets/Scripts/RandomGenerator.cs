@@ -11,6 +11,8 @@ public class RandomGenerator : MonoBehaviour
     public GameObject fireball;
     public GameObject rock;
     public GameObject stalagmite;
+    public GameObject steven;
+    private bool StevenSpawned = false;
     public Point_Functionality point_functionality;
     System.Random random = new System.Random();
 
@@ -24,6 +26,7 @@ public class RandomGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Change respawn times for avoidable objects and increase difficulty as game progresses.
         if(point_functionality.score_rounded >= 150 && point_functionality.score_rounded <= 300)
         {
             difficulty = 7;
@@ -51,6 +54,15 @@ public class RandomGenerator : MonoBehaviour
         {
             respawnTime = .85f;
         }
+
+        //Initial spawn of Steven
+        if(point_functionality.score_rounded == 25 && StevenSpawned == false)
+        {
+            GameObject SteveClone = Instantiate(steven, new Vector3(0f, 12.3f, 11.08f), Quaternion.identity);
+            SteveClone.SetActive(true);
+            StevenSpawned = true;
+        }
+
     }
 
     IEnumerator objectWave()
@@ -93,16 +105,18 @@ public class RandomGenerator : MonoBehaviour
         int willSpawn = random.Next(1,difficulty);
         if(willSpawn == 1)
         {
-            Instantiate(stalagmite, new Vector3(-1.3f, 6, 10), Quaternion.identity);
+            GameObject StalagClone = Instantiate(stalagmite, new Vector3(-1.3f, 6, 10), Quaternion.identity);
+            StalagClone.SetActive(true);
         }
         if(willSpawn == 2)
         {
-            Instantiate(fireball, new Vector3(-1.3f, 6, 10), Quaternion.identity);
+            GameObject FireClone = Instantiate(fireball, new Vector3(-1.3f, 6, 10), Quaternion.identity);
+            FireClone.SetActive(true);
         }
         if(willSpawn == 3)
         {
-            Instantiate(rock, new Vector3(-1.3f, 6, 10), Quaternion.identity);
-
+            GameObject RockClone = Instantiate(rock, new Vector3(-1.3f, 6, 10), Quaternion.identity);
+            RockClone.SetActive(true);
         }
     }
     private void spawnM()
@@ -110,16 +124,19 @@ public class RandomGenerator : MonoBehaviour
         int willSpawn = random.Next(1,difficulty);
         if(willSpawn == 1)
         {
-            Instantiate(stalagmite, new Vector3(0f, 6, 10), Quaternion.identity);
+            GameObject StalagClone = Instantiate(stalagmite, new Vector3(0f, 6, 10), Quaternion.identity);
+            StalagClone.SetActive(true);
         }
         if(willSpawn == 2)
         {
-            Instantiate(fireball, new Vector3(0f, 6, 10), Quaternion.identity);
+            GameObject FireClone = Instantiate(fireball, new Vector3(0f, 6, 10), Quaternion.identity);
+            FireClone.SetActive(true);
 
         }
         if(willSpawn == 3)
         {
-            Instantiate(rock, new Vector3(0f, 6, 10), Quaternion.identity);
+            GameObject RockClone = Instantiate(rock, new Vector3(0f, 6, 10), Quaternion.identity);
+            RockClone.SetActive(true);
         }
     }
     private void spawnR()
@@ -127,15 +144,18 @@ public class RandomGenerator : MonoBehaviour
         int willSpawn = random.Next(1,difficulty);
         if(willSpawn == 1)
         {
-            Instantiate(stalagmite, new Vector3(1.3f, 6, 10), Quaternion.identity);
+            GameObject StalagClone = Instantiate(stalagmite, new Vector3(1.3f, 6, 10), Quaternion.identity);
+            StalagClone.SetActive(true);
         }
         if(willSpawn == 2)
         {
-            Instantiate(fireball, new Vector3(1.3f, 6, 10), Quaternion.identity);
+            GameObject FireClone = Instantiate(fireball, new Vector3(1.3f, 6, 10), Quaternion.identity);
+            FireClone.SetActive(true);
         }
         if(willSpawn == 3)
         {
-            Instantiate(rock, new Vector3(1.3f, 6, 10), Quaternion.identity);
+            GameObject RockClone = Instantiate(rock, new Vector3(1.3f, 6, 10), Quaternion.identity);
+            RockClone.SetActive(true);
         }
     }
 }

@@ -18,7 +18,7 @@ public class CoinMovement : MonoBehaviour
         transform.Translate(0, speed, 0);
         if(point_functionality.score_rounded >= 150 && point_functionality.score_rounded <= 300)
         {
-            speed = -.001f;
+            speed = -.0012f;
         }
         if(point_functionality.score_rounded >= 300 && point_functionality.score_rounded <= 450)
         {

@@ -6,7 +6,7 @@ public class CoinGeneration : MonoBehaviour
 {
     public static float speed = -.001f;
     public GameObject coin;
-    public float respawnTime = 6.0f;
+    public float respawnTime = 3;
     bool isCreated;
 
     System.Random random = new System.Random();
@@ -19,7 +19,7 @@ public class CoinGeneration : MonoBehaviour
     IEnumerator coinWave()
     {
         while(true){
-            int whichLane = random.Next(1,12);
+            int whichLane = random.Next(1,7);
             if(whichLane == 1)
             {
                 spawnL();
@@ -57,10 +57,10 @@ public class CoinGeneration : MonoBehaviour
     }
     private void spawnL()
     {
-            int coinSpawn = random.Next(1,15);
+            int coinSpawn = random.Next(1,7);
             if(coinSpawn == 4)
             {
-                int howManyCoins = random.Next(1,5);
+                int howManyCoins = random.Next(1,4);
                 if(howManyCoins == 1)
                 {
                     Instantiate(coin, new Vector3(-1.3f, 6, 10), Quaternion.identity);
@@ -75,22 +75,15 @@ public class CoinGeneration : MonoBehaviour
                     Instantiate(coin, new Vector3(-1.3f, 6, 10), Quaternion.identity);
                     Instantiate(coin, new Vector3(-1.3f, 8, 10), Quaternion.identity);
                     Instantiate(coin, new Vector3(-1.3f, 10, 10), Quaternion.identity);
-                }
-                if(howManyCoins == 4)
-                {
-                    Instantiate(coin, new Vector3(-1.3f, 6, 10), Quaternion.identity);
-                    Instantiate(coin, new Vector3(-1.3f, 8, 10), Quaternion.identity);
-                    Instantiate(coin, new Vector3(-1.3f, 10, 10), Quaternion.identity);
-                    Instantiate(coin, new Vector3(-1.3f, 12, 10), Quaternion.identity);
                 }
             }
     }
     private void spawnR()
     {
-            int coinSpawn = random.Next(1,15);
-            if(coinSpawn == 11)
+            int coinSpawn = random.Next(1,7);
+            if(coinSpawn == 4)
             {
-                int howManyCoins = random.Next(1,5);
+                int howManyCoins = random.Next(1,4);
                 if(howManyCoins == 1)
                 {
                     Instantiate(coin, new Vector3(1.3f, 6, 10), Quaternion.identity);
@@ -105,22 +98,15 @@ public class CoinGeneration : MonoBehaviour
                     Instantiate(coin, new Vector3(1.3f, 6, 10), Quaternion.identity);
                     Instantiate(coin, new Vector3(1.3f, 8, 10), Quaternion.identity);
                     Instantiate(coin, new Vector3(1.3f, 10, 10), Quaternion.identity);
-                }
-                if(howManyCoins == 4)
-                {
-                    Instantiate(coin, new Vector3(1.3f, 6, 10), Quaternion.identity);
-                    Instantiate(coin, new Vector3(1.3f, 8, 10), Quaternion.identity);
-                    Instantiate(coin, new Vector3(1.3f, 10, 10), Quaternion.identity);
-                    Instantiate(coin, new Vector3(1.3f, 12, 10), Quaternion.identity);
                 }
             }
     }
     private void spawnM()
     {
-            int coinSpawn = random.Next(1,15);
-            if(coinSpawn == 9)
+            int coinSpawn = random.Next(1,7);
+            if(coinSpawn == 4)
             {
-                int howManyCoins = random.Next(1,5);
+                int howManyCoins = random.Next(1,4);
                 if(howManyCoins == 1)
                 {
                     Instantiate(coin, new Vector3(0f, 6, 10), Quaternion.identity);
@@ -135,13 +121,6 @@ public class CoinGeneration : MonoBehaviour
                     Instantiate(coin, new Vector3(0f, 6, 10), Quaternion.identity);
                     Instantiate(coin, new Vector3(0f, 8, 10), Quaternion.identity);
                     Instantiate(coin, new Vector3(0f, 10, 10), Quaternion.identity);
-                }
-                if(howManyCoins == 4)
-                {
-                    Instantiate(coin, new Vector3(0f, 6, 10), Quaternion.identity);
-                    Instantiate(coin, new Vector3(0f, 8, 10), Quaternion.identity);
-                    Instantiate(coin, new Vector3(0f, 10, 10), Quaternion.identity);
-                    Instantiate(coin, new Vector3(0f, 12, 10), Quaternion.identity);
                 }
             }
     }

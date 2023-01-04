@@ -322,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!95 &426672866
 Animator:
   serializedVersion: 4
@@ -453,7 +453,6 @@ GameObject:
   m_Component:
   - component: {fileID: 435522995}
   - component: {fileID: 435522994}
-  - component: {fileID: 435522996}
   - component: {fileID: 435522997}
   - component: {fileID: 435522998}
   m_Layer: 0
@@ -462,7 +461,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &435522994
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -523,26 +522,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 435522993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 12.3, z: 11.08}
+  m_LocalPosition: {x: -10.98, y: 7.32, z: 1.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &435522996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 435522993}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2963ddbd85dff9d488425e9a3f990071, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  steven: {fileID: 435522993}
 --- !u!114 &435522997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,9 +544,11 @@ MonoBehaviour:
   point_functionality: {fileID: 519420033}
   myAnimationController: {fileID: 435522998}
   speed: -0.005
+  player: {fileID: 0}
   screen_shake: {fileID: 519420037}
   increment: 1
   isSlamming: 0
+  fsm: {fileID: 612306762}
 --- !u!95 &435522998
 Animator:
   serializedVersion: 4
@@ -704,6 +692,7 @@ MonoBehaviour:
   fireball: {fileID: 1372248939}
   rock: {fileID: 1278958859}
   stalagmite: {fileID: 426672865}
+  steven: {fileID: 435522993}
   point_functionality: {fileID: 519420033}
 --- !u!114 &519420035
 MonoBehaviour:
@@ -730,7 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coin: {fileID: 1855847115}
-  respawnTime: 1.5
+  respawnTime: 3
 --- !u!114 &519420037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2637,6 +2626,58 @@ MonoBehaviour:
         - updateType
         paramDataPos: 000000000000000001000000020000000300000000000000000000000000000004000000010000000100000000000000010000000000000000000000020000000000000008000000040000000c0000001000000011000000
         paramByteDataSize: 00000000000000000000000000000000000000000400000000000000000000000400000000000000000000000000000000000000000000000000000000000000000000000400000000000000040000000100000004000000
+    - name: State 1
+      description: 
+      colorIndex: 0
+      position:
+        serializedVersion: 2
+        x: 652.56433
+        y: 171.5385
+        width: 100
+        height: 16
+      isBreakpoint: 0
+      isSequence: 0
+      hideUnused: 0
+      transitions: []
+      actionData:
+        actionNames: []
+        customNames: []
+        actionEnabled: 
+        actionIsOpen: 
+        actionStartIndex: 
+        actionHashCodes: 
+        unityObjectParams: []
+        fsmGameObjectParams: []
+        fsmOwnerDefaultParams: []
+        animationCurveParams: []
+        functionCallParams: []
+        fsmTemplateControlParams: []
+        fsmEventTargetParams: []
+        fsmPropertyParams: []
+        layoutOptionParams: []
+        fsmStringParams: []
+        fsmObjectParams: []
+        fsmVarParams: []
+        fsmArrayParams: []
+        fsmEnumParams: []
+        fsmFloatParams: []
+        fsmIntParams: []
+        fsmBoolParams: []
+        fsmVector2Params: []
+        fsmVector3Params: []
+        fsmColorParams: []
+        fsmRectParams: []
+        fsmQuaternionParams: []
+        stringParams: []
+        byteData: 
+        arrayParamSizes: 
+        arrayParamTypes: []
+        customTypeSizes: 
+        customTypeNames: []
+        paramDataType: 
+        paramName: []
+        paramDataPos: 
+        paramByteDataSize: 
     events:
     - name: Swipe Right
       isSystemEvent: 0
@@ -3027,7 +3068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1278958860
 Rigidbody2D:
   serializedVersion: 4
@@ -3159,7 +3200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &1372248940
 Rigidbody2D:
   serializedVersion: 4
