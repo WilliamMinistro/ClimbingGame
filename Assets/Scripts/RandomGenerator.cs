@@ -21,6 +21,7 @@ public class RandomGenerator : MonoBehaviour
     {
         difficulty = 8;  // Difficulty starts at 8, since it is the upper bound of an RNG. As it gets lower, it gets more difficult.
         StartCoroutine(objectWave());
+        StartCoroutine(stevenWave());
     }
 
     // Update is called once per frame
@@ -56,7 +57,7 @@ public class RandomGenerator : MonoBehaviour
         }
 
         //Initial spawn of Steven
-        if(point_functionality.score_rounded == 25 && StevenSpawned == false)
+        if(point_functionality.score_rounded == 250 && StevenSpawned == false)
         {
             GameObject SteveClone = Instantiate(steven, new Vector3(0f, 12.3f, 11.08f), Quaternion.identity);
             SteveClone.SetActive(true);
@@ -97,6 +98,20 @@ public class RandomGenerator : MonoBehaviour
                 spawnM();
             }
             yield return new WaitForSeconds(respawnTime);
+        }
+    }
+
+    IEnumerator stevenWave()
+    {
+        while(true)
+        {
+            int willSteveSpawn = random.Next(1,15);
+            if(point_functionality.score_rounded > 260 && willSteveSpawn == 7)
+            {
+                GameObject SteveClone = Instantiate(steven, new Vector3(0f, 12.3f, 11.08f), Quaternion.identity);
+                SteveClone.SetActive(true);
+            }
+            yield return new WaitForSeconds(6);
         }
     }
 
