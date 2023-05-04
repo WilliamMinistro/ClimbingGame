@@ -12,7 +12,9 @@ public class RandomGenerator : MonoBehaviour
     public GameObject rock;
     public GameObject stalagmite;
     public GameObject steven;
+    public GameObject clawguy;
     private bool StevenSpawned = false;
+    private bool ClawGuySpawned = false;
     public Point_Functionality point_functionality;
     System.Random random = new System.Random();
 
@@ -62,6 +64,13 @@ public class RandomGenerator : MonoBehaviour
             GameObject SteveClone = Instantiate(steven, new Vector3(0f, 12.3f, 11.08f), Quaternion.identity);
             SteveClone.SetActive(true);
             StevenSpawned = true;
+        }
+        //Initial spawn of claw guy
+        if(point_functionality.score_rounded == 20 && ClawGuySpawned == false)
+        {
+            GameObject ClawGuyClone = Instantiate(clawguy, new Vector3(0f, 12.3f, 11.08f), Quaternion.identity);
+            ClawGuyClone.SetActive(true);
+            ClawGuySpawned = true;
         }
 
     }
