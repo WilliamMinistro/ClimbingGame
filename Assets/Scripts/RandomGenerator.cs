@@ -66,7 +66,7 @@ public class RandomGenerator : MonoBehaviour
             StevenSpawned = true;
         }
         //Initial spawn of claw guy
-        if(point_functionality.score_rounded == 20 && ClawGuySpawned == false)
+        if(point_functionality.score_rounded == 0 && ClawGuySpawned == false)
         {
             GameObject ClawGuyClone = Instantiate(clawguy, new Vector3(0f, 12.3f, 11.08f), Quaternion.identity);
             ClawGuyClone.SetActive(true);

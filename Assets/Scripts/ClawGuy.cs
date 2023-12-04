@@ -5,63 +5,54 @@ using UnityEngine;
 public class ClawGuy : MonoBehaviour
 {
     public GameObject player;
-    public GameObject pivotPoint;
     public GameObject clawArm;
-    public GameObject clawWithArm;
     public float speed = -.005f;
     private Vector2 targetPosition;
     private Vector3 offset = new Vector3(.43f, 1f, 0f);
     public float followSpeed = 5.0f;
-    private bool isGrabbing = false;
+    private float downTimer = 0f;
+    private float upTimer = 0f;
+    private bool movingDown = true;
+
+
 
     void Start()
     {
-        StartCoroutine(ExtendAndRetractClaw());
     }
 
     void Update()
     {
-        targetPosition = new Vector2(player.transform.position.x, transform.position.y);
-        Vector2 newPosition = Vector2.Lerp(transform.position, targetPosition, Time.deltaTime * followSpeed);
-        newPosition.y = Mathf.Clamp(newPosition.y, 3.4f, 12.3f);
-        transform.position = new Vector3(newPosition.x, newPosition.y, 11.08f);
-        if (transform.position.y >= 3.4f)
-        {
-            transform.Translate(0, speed, 0);
-        }
+         targetPosition = new Vector2(1.3f, transform.position.y);
+         Vector2 newPosition = Vector2.Lerp(transform.position, targetPosition, Time.deltaTime * followSpeed);
+         newPosition.y = Mathf.Clamp(newPosition.y, 3.4f, 12.3f);
+         transform.position = new Vector3(newPosition.x, newPosition.y, 11.08f);
 
-        // Smoothly move the pivot point to the player's position with the same follow speed as the ClawGuy
-        pivotPoint.transform.position = Vector3.Lerp(pivotPoint.transform.position, player.transform.position, Time.deltaTime * followSpeed);
+         if (movingDown)
+         {
+             if (transform.position.y >= 3.4f)
+             {
+                 transform.Translate(0, speed, 0); // Moving down
+             }
 
-        // Position the claw to the right of the player, below the pivot point
-        clawWithArm.transform.position = pivotPoint.transform.position + offset;
-    }
+             downTimer += Time.deltaTime;
 
-    IEnumerator ExtendAndRetractClaw()
-    {
-        while (true)
-        {
-            for (float t = 0; t <= 1; t += Time.deltaTime)
+             if (downTimer >= 5f)
+             {
+                 movingDown = false; // Start moving up
+                 downTimer = 0f; // Reset down timer
+             }
+         }
+         else
+         {
+            transform.Translate(0, -speed, 0); // Moving up (note the -speed)
+            upTimer += Time.deltaTime;
+
+            if (upTimer >= 3f) // 5 seconds for moving up
             {
-                Vector3 targetArmPosition = new Vector3(0, Mathf.Lerp(0, -3, t), 0);
-                clawArm.transform.localPosition = targetArmPosition;
-                yield return null;
+                GameObject clawArmClone = Instantiate(clawArm, new Vector3(1.73f, 8, 0), Quaternion.identity);
+                clawArmClone.SetActive(true);
+                Destroy(gameObject);
             }
-
-            yield return new WaitForSeconds(5);
-
-            isGrabbing = true;
-
-            for (float t = 0; t <= 1; t += Time.deltaTime)
-            {
-                Vector3 targetArmPosition = new Vector3(0, Mathf.Lerp(-3, 0, t), 0);
-                clawArm.transform.localPosition = targetArmPosition;
-                yield return null;
-            }
-
-            yield return new WaitForSeconds(1);
-
-            isGrabbing = false;
-        }
+         }
     }
 }
