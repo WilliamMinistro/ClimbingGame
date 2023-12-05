@@ -44,12 +44,12 @@ public class ClawGuy : MonoBehaviour
          }
          else
          {
-            transform.Translate(0, -speed, 0); // Moving up (note the -speed)
+            transform.Translate(0, -speed, 0);
             upTimer += Time.deltaTime;
 
-            if (upTimer >= 3f) // 5 seconds for moving up
+            if (upTimer >= 1f)
             {
-                GameObject clawArmClone = Instantiate(clawArm, new Vector3(1.73f, 8, 0), Quaternion.identity);
+                GameObject clawArmClone = Instantiate(clawArm, new Vector3(1.73f, 8, 10), Quaternion.identity);
                 clawArmClone.SetActive(true);
                 Destroy(gameObject);
             }
